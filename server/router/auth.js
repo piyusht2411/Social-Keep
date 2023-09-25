@@ -4,6 +4,9 @@ const jwt = require('jsonwebtoken');
 require('../Database/connection');
 const User = require('../model/userSchema');
 const bcrypt = require('bcrypt');
+const authenticate  = require('../middleware/authenticate');
+const cookies = require('cookie-parser');
+Router.use(cookies());
 
 Router.get('/', (req, resp) => {
     resp.send("hey welcome in the router");
@@ -98,13 +101,12 @@ Router.post('/signin', async (req, resp) => {
         }
     }catch(err){
         console.log(err);
-    }
-
+    }  
     
+});
+Router.get('/about',authenticate, (req,resp)=>{
+    console.log('about');
+    resp.send(req.rootUser);
+}); 
 
-
-   
-   
-    
-})
 module.exports = Router;

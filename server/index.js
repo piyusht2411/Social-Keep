@@ -14,10 +14,13 @@ app.use(require('./router/auth'));
 
 
 
-const middleware = (req, resp, next) =>{
-    console.log("middleware");
-    next();
-} 
+// const middleware = (req, resp, next) =>{
+//     console.log("middleware");
+//     next();
+// } 
+// app.get('/contact', authenticate, (req,resp)=>{
+//     resp.send("Hey this is about page");
+// })
 
 app.listen(PORT, ()=>{
     console.log(`Server Conneted at ${PORT}`);
